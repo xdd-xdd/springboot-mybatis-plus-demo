@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyx.demo.mapper.TeaStuMapper">
+    <resultMap id="BaseResult" type="com.xyx.demo.entity.TeaStu">
+        <id column="ID" property="id"/>
+        <result column="TEAID" property="teaId"/>
+        <result column="STUID" property="stuId"/>
+        <!--多对多关系映射-->
+        <collection property="teachers" ofType="com.xyx.demo.entity.Teacher" column="teaid" select="com.xyx.demo.mapper.TeacherMapper.selectById">
+            <!--<id column="ID" property="id"/>
+            <result column="NAME" property="name"/>
+            <result column="CLASS" property="_class"/>-->
+        </collection>
+        <!--多对多关系映射-->
+        <collection property="students" ofType="com.xyx.demo.entity.Student" column="stuid" select="com.xyx.demo.mapper.StudentMapper.selectById">
+            <!--<id column="ID" property="id"/>
+            <result column="NAME" property="name"/>
+            <result column="AGE" property="age"/>-->
+        </collection>
+    </resultMap>
+
+   <!-- <select id="findAll" resultMap="BaseResult">
+        select * from tea_stu;
+    </select>-->
+</mapper>

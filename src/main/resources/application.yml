@@ -1,0 +1,27 @@
+
+spring:
+  datasource:
+    url: jdbc:kingbase8://localhost:54321/USERDB
+    userName: ****
+    password: ****
+    driverClassName: com.kingbase8.Driver
+
+mybatis-plus:
+  #指定xml文件路径
+  mapper-locations: classpath*:xml/*Mapper.xml
+  global-config:
+    db-config:
+      #id-type: auto
+      #field-strategy: not_empty
+      #驼峰下划线转换
+     column-underline: true
+      #逻辑删除配置
+      #logic-delete-value: 0
+      #logic-not-delete-value: 1
+      #db-type: mysql
+    #refresh: false
+  configuration:
+  #关闭二级缓存
+   map-underscore-to-camel-case: false
+   cache-enabled: false
+   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

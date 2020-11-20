@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyx.demo.mapper.TeacherMapper">
+    <resultMap id="baseResult" type="com.xyx.demo.entity.Teacher">
+        <id column="ID" property="id"/>
+        <result column="NAME" property="name"/>
+        <result column="CLASS" property="_class"/>
+        <!--一对多关系映射-->
+        <collection property="students" ofType="student" column="id" select="com.xyx.demo.mapper.StudentMapper.findByTeaId"/>
+    </resultMap>
+</mapper>
